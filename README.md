@@ -168,24 +168,28 @@ Some keyword arguments, like `_cwd` and `_env` are reserved for tweaking the beh
 * The following Bash pipeline:
 
   ~~~bash
+  #!/bin/bash
   count=$(ls | wc -l)
   ~~~
 
   would become this System Heaven invocation:
 
   ~~~python
+  #!/usr/bin/env python3
   count = sh("ls | wc -l |").stdout.read()
   ~~~
 
 * System Heaven variables can be iterables. This Bash line:
 
   ~~~bash
+  #!/bin/bash
   count=$(ls *.txt | wc -l)
   ~~~
 
   becomes
 
   ~~~python
+  #!/usr/bin/env python3
   from glob import glob
   count = sh("ls $files | wc -l |", files=glob("*.txt")).stdout.read()
   ~~~
@@ -193,6 +197,7 @@ Some keyword arguments, like `_cwd` and `_env` are reserved for tweaking the beh
 * You can change the current working directory with `_cwd`. This Bash line:
 
   ~~~bash
+  #!/bin/bash
   cd /home/user
   count=$(ls *.txt | wc -l)
   ~~~
@@ -200,6 +205,7 @@ Some keyword arguments, like `_cwd` and `_env` are reserved for tweaking the beh
   becomes:
 
   ~~~python
+  #!/usr/bin/env python3
   from glob import glob
   count = sh("ls $files | wc -l |",
              files=glob("*.txt"),
