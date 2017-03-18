@@ -100,5 +100,5 @@ def sh(pipeline: str, **kwargs):
         return Pipeline(procs)
 
     for proc in procs:
-        print("wait returned {}".format(proc.wait()))
+        proc.wait()
     return procs[-1].returncode
