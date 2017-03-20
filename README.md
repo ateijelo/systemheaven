@@ -214,5 +214,8 @@ sh('ls -l $dir', dir="/media/" + user)
 
 String manipulation is the responsibility of the caller.
 
+#### A message from this README
+
+I'm longer than the actual code. Don't "read **me**", read the code.
 
 [shell-injection]: https://en.wikipedia.org/wiki/Shell_injection#Shell_injection
