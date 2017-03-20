@@ -96,9 +96,8 @@ def sh(pipeline: str, **kwargs):
         )
         procs.append(proc)
 
-    if headpipe or tailpipe:
-        return Pipeline(procs)
+    pl = Pipeline(procs)
+    if not headpipe and not tailpipe:
+        pl.wait()
 
-    for proc in procs:
-        proc.wait()
-    return procs[-1].returncode
+    return pl
